@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  // font-family: 'Noto Sans JP', sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  background: #ffffff;
+  color: $font-color;
+  letter-spacing: 0;
+  line-height: 1;
+  font-family: $f-alata;
+  // @include sp {
+  //   font-size: 1.4rem;
+  // }
+}
+
+a, button {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+select,
+button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/style.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -38,7 +39,20 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader'
   ],
+  webfontloader: {
+    google: {
+      families: ['Alata|Fredoka+One|Shadows+Into+Light']
+    }
+  },
+  // 変数やmixinをグローバルで使用できるようにする
+  styleResources: {
+    scss: [
+      '~/assets/css/foundation/_variables.scss',
+    ]
+  },
   /*
   ** Build configuration
   */
