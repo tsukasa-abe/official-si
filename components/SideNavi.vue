@@ -1,18 +1,13 @@
 <template>
   <div class="side-navi">
-    <h1 class="title">
-      Soichiro Ikeda
-    </h1>
+    <nuxt-link to="/" class="title navbar-item">Soichiro Ikeda</nuxt-link>
     <nav class="side-navi__list">
       <ul>
         <li class="sidemenu">
           <nuxt-link to="/about" class="navbar-item">about</nuxt-link>
         </li>
-
         <li class="sidemenu">
-          <a>
-            portfolio
-          </a>
+          <nuxt-link to="/portfolio" class="navbar-item">portfolio</nuxt-link>
         </li>
 
         <li class="sidemenu">
@@ -32,8 +27,6 @@ export default {
 
 <style lang="scss" scoped>
 .side-navi {
-  // background-color: #f9f9f9;
-  // background-color: #f5fbff;
   width: 300px;
   height: 100vh;
   // box-shadow: 1px 2px 8px 2px rgba(0,0,0,.1);
@@ -61,6 +54,5 @@ export default {
       }
     }
   }
-
 }
 </style>

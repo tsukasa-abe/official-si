@@ -1,9 +1,12 @@
-
-export default {
-  mode: 'spa',
-  /*
-  ** Headers of the page
-  */
+const { getConfigForKeys } = require('./lib/config.js')
+const ctfConfig = getConfigForKeys([
+  'CTF_PAGE_TYPE_ID',
+  'CTF_SPACE_ID',
+  'CTF_CDA_ACCESS_TOKEN'
+])
+const { createClient } = require('./plugins/contentful')
+const cdaClient = createClient(ctfConfig)
+const config = {
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -19,17 +22,37 @@ export default {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+  build: {
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        }),
+        config.devtool = 'inline-cheap-module-source-map'
+      }
+    }
+  },
   /*
   ** Global CSS
   */
   css: [
     '@/assets/css/style.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
+  plugins: [{ src: '~plugins/contentful' }],
+  generate: {
+    routes() {
+      return cdaClient.getEntries({
+        'content_type': ctfConfig.CTF_PAGE_TYPE_ID
+      }).then(entries => {
+        return [
+          ...entries.map(entry => `/port/${entry.fields.path}`)
+        ]
+      })
+    }
+  },
   /*
   ** Nuxt.js dev-modules
   */
@@ -53,14 +76,10 @@ export default {
       '~/assets/css/foundation/_variables.scss',
     ]
   },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
+  env: {
+    CTF_SPACE_ID: ctfConfig.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: ctfConfig.CTF_CDA_ACCESS_TOKEN,
+    CTF_PAGE_TYPE_ID: ctfConfig.CTF_PAGE_TYPE_ID
   }
 }
+module.exports = config

@@ -1,31 +1,44 @@
 <template>
-  <div class="container">
+  <section class="top">
     <div>
-      <SideNavi />
-      <Portfolio />
+      <TopPortfolio v-for="post in posts"
+        v-bind:key="post.fields.path"
+              :image="post.fields.image"
+              :path="post.fields.path"
+      />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import SideNavi from '~/components/SideNavi.vue'
-import Portfolio from '~/components/Portfolio.vue'
+import TopPortfolio from '~/components/TopPortfolio.vue'
+import {createClient} from '~/plugins/contentful.js'
 
+const client = createClient()
 export default {
+  transition: 'slide-left',
   components: {
-    SideNavi,
-    Portfolio
+    TopPortfolio
+  },
+  data (){
+    return {
+      posts: []
+    }
+  },
+  async asyncData ({ env, params }) {
+    return await client.getEntries({
+      'content_type': env.CTF_PAGE_TYPE_ID,
+      order: "sys.createdAt"
+    }).then(entries => {
+      return {
+        posts: entries.items
+      }
+    })
+    .catch(console.error)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//   margin: 0 auto;
-//   min-height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-// }
+
 </style>
