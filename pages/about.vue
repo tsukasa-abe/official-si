@@ -1,9 +1,6 @@
-<template>
-  <section class="about">
-    <h1 class="">
-      About
-    </h1>
-  </section>
+<template lang="pug">
+  section.about
+    h1 About
 </template>
 
 <script>

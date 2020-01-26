@@ -1,7 +1,6 @@
-<template>
-  <section class="portfolio-path">
-    <img class="" v-bind:src="post.fields.image.fields.file.url"/>
-  </section>
+<template lang="pug">
+  section.portfolio-path
+    img(v-lazy='post.fields.image.fields.file.url')
 </template>
 
 <script>

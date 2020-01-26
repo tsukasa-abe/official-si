@@ -1,12 +1,8 @@
-<template>
-  <section class="portfolio">
-    <div class="container" v-for="post in posts"
-      v-bind:key="post.fields.path">
-      <nuxt-link v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}" class="wrapper">
-        <img v-bind:src="post.fields.image.fields.file.url"/>
-      </nuxt-link>
-    </div>
-  </section>
+<template lang="pug">
+  section.portfolio
+    .container(v-for='post in posts', v-bind:key='post.fields.path')
+      nuxt-link.wrapper(v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}")
+        img(v-lazy='post.fields.image.fields.file.url')
 </template>
 
 <script>
@@ -34,18 +30,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//   margin: 0 auto;
-//   min-height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-// }
 .portfolio {
   padding-left: 300px;
+  column-count: 2;
+  column-gap: 0;
   img {
-    padding: 50px 50px 50px 0;
+    padding: 10px;
   }
 }
 </style>
