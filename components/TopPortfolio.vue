@@ -1,10 +1,9 @@
-<template>
-  <nuxt-link v-bind:to="{ name: 'portfolio-path', params: { path: path }}" class="wrapper">
-    <div class="top-portfolio">
-      <img v-bind:src="image.fields.file.url"/>
-    </div>
-  </nuxt-link>
+<template lang="pug">
+  nuxt-link.wrapper(v-bind:to="{ name: 'portfolio-path', params: { path: path }}")
+    .top-portfolio
+      img(v-lazy='image.fields.file.url')
 </template>
+
 <script>
 export default {
  props: ['path', 'image']

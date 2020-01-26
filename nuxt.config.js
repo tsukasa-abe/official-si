@@ -41,7 +41,10 @@ const config = {
   css: [
     '@/assets/css/style.scss'
   ],
-  plugins: [{ src: '~plugins/contentful' }],
+  plugins: [
+    { src: '~plugins/contentful' },
+    '~/plugins/lazyload'
+  ],
   generate: {
     routes() {
       return cdaClient.getEntries({

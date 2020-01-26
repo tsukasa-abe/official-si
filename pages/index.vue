@@ -1,13 +1,7 @@
-<template>
-  <section class="top">
-    <div>
-      <TopPortfolio v-for="post in posts"
-        v-bind:key="post.fields.path"
-              :image="post.fields.image"
-              :path="post.fields.path"
-      />
-    </div>
-  </section>
+<template lang="pug">
+  section.top
+    div
+      TopPortfolio(v-for='post in posts', v-bind:key='post.fields.path', :image='post.fields.image', :path='post.fields.path')
 </template>
 
 <script>
