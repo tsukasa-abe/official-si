@@ -33,17 +33,22 @@ const config = {
         }),
         config.devtool = 'inline-cheap-module-source-map'
       }
-    }
+    },
+    vendor: [
+      'vue-awesome-swiper'
+    ]
   },
   /*
   ** Global CSS
   */
   css: [
-    '@/assets/css/style.scss'
+    '@/assets/css/style.scss',
+    'swiper/dist/css/swiper.css'
   ],
   plugins: [
     { src: '~plugins/contentful' },
-    '~/plugins/lazyload'
+    { src: '~plugins/vue-awesome-swiper', ssr: false},
+    '~/plugins/lazyimage'
   ],
   generate: {
     routes() {
