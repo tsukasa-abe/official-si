@@ -25,5 +25,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.portfolio-path {
+  img {
+    max-width: 100%;
+  }
+}
 </style>
