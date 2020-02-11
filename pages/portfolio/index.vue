@@ -2,8 +2,7 @@
   section.portfolio
     .container(v-for='post in posts', v-bind:key='post.fields.path')
       nuxt-link(v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}")
-        .box(v-scroll='handleScroll')
-          v-lazy-image(:src='post.fields.image.fields.file.url')
+        v-lazy-image(:src='post.fields.image.fields.file.url', v-scroll-reveal.reset='')
 </template>
 
 <script>
@@ -26,20 +25,6 @@ export default {
       }
     })
     .catch(console.error)
-  },
-  methods: {
-    handleScroll: function(evt, el) {
-      console.log(window.scrollY);
-      let top = el.getBoundingClientRect().top;
-      if (window.scrollY >  top + window.pageYOffset - 600) {
-        el.setAttribute(
-          "style",
-          "opacity: 1; transform: translate3d(0, -10px, 0)"
-        );
-        return true;
-      }
-      return false;
-    }
   }
 }
 </script>
@@ -54,10 +39,5 @@ export default {
     padding: 10px;
     max-width: 100%;
   }
-}
-
-.box {
-  opacity: 0;
-  transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 </style>
