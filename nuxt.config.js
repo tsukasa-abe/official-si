@@ -48,6 +48,7 @@ const config = {
   plugins: [
     { src: '~plugins/contentful' },
     { src: '~plugins/vue-awesome-swiper', ssr: false},
+    '~plugins/scroll',
     '~/plugins/lazyimage'
   ],
   generate: {

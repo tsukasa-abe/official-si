@@ -26,8 +26,11 @@ export default {
 
 <style lang="scss" scoped>
 .portfolio-path {
+  padding-left: 300px;
   img {
     max-width: 100%;
+    height: 100vh;
+    margin: 0 auto;
   }
 }
 </style>

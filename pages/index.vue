@@ -30,7 +30,7 @@ export default {
   async asyncData ({ env, params }) {
     return await client.getEntries({
       'content_type': env.CTF_PAGE_TYPE_ID,
-      order: "sys.createdAt",
+      order: 'sys.createdAt',
       limit: MAX_ENTRY
     }).then(entries => {
       return {
@@ -51,8 +51,8 @@ export default {
     padding: 50px 20px;
     // 下記仮
     // padding: 50px 50px 0 50px;
-    // max-width: 90%;
-    height: 100vh;
+    max-width: 90%;
+    // height: 100vh;
   }
 }
 </style>
