@@ -1,7 +1,7 @@
 <template lang="pug">
   section.top
     swiper(:options="swiperOption")
-      swiper-slide.top__portfolio(v-for='post in posts', :post="post")
+      swiper-slide.top__portfolio(v-for='post in posts', :post="post", , v-bind:key='post.fields.path')
         v-lazy-image(:src='post.fields.image.fields.file.url')
 </template>
 
@@ -49,10 +49,12 @@ export default {
   }
   img {
     padding: 50px 20px;
-    // 下記仮
-    // padding: 50px 50px 0 50px;
     max-width: 90%;
+    // 下記仮
+    // padding: 50px 0;
+    // max-width: 90%;
     // height: 100vh;
+    // margin: 0 auto;
   }
 }
 </style>

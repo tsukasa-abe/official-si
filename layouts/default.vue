@@ -2,6 +2,7 @@
   // このファイルは、Railsでいうapplication.html.erbみたいなやつ※headerやfooterを管理する
   div
     SideNavi
+    //- Loading
     transition(name='page', mode="out-in")
       .main-content
         .container
@@ -10,10 +11,12 @@
 
 <script>
 import SideNavi from '~/components/SideNavi.vue'
+// import Loading from '~/components/Loading.vue'
 
 export default {
   components: {
-    SideNavi
+    SideNavi,
+    // Loading
   }
 }
 </script>

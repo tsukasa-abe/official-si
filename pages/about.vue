@@ -1,16 +1,10 @@
 <template lang="pug">
   section.about
-    .about--text
+    .about--text.animated.fadeInDown
       .a-name
-        p 池田 聡一朗
-        p Ikeda Soichiro
+        p Coming soon...
       .a-body
-        p 1986年生まれ フォトグラファー 独学で写真を学び、
-        p 2009年より単身アフリカへ
-        p 以来アフリカをはじめとする世界中の少数民族を撮影、発表。
-        p 唯一無二の色彩と直感的な生き方が評価され
-        p 2017年日経ビジネス誌で「次代を創る100人」へ選出
-        p また同年、講談社出版文化賞 写真賞を受賞
+        //- p text
     //- v-lazy-image(:src="require(`~/assets/images/sample.jpg`)")
 </template>
 
@@ -29,6 +23,7 @@
     color: #888888;
     // padding-top: 400px;
     width: 400px;
+    text-align: center;
     .a-name {
       p {
         font-size: 2.5rem;
