@@ -1,8 +1,13 @@
 <template lang="pug">
   section.portfolio
-    .container(v-for='post in posts', v-bind:key='post.fields.path')
-      nuxt-link(v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}")
-        v-lazy-image(:src='post.fields.image.fields.file.url', v-scroll-reveal.reset='')
+    .container
+      //- div(v-for='(image, index) in images', :key='image.fields.id')
+      div(v-for='post in posts', v-bind:key='post.fields.path')
+        nuxt-link(v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}")
+          v-lazy-image(:src='post.fields.image.fields.file.url', v-inview:animate="'fadeInUp'")
+        //- img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
+      //- client-only
+        light-box(ref='lightbox', :images='images', :show-light-box='false', :show-caption='true')
 </template>
 
 <script>
@@ -12,6 +17,13 @@ const client = createClient()
 export default {
   data() {
     return {
+      // images: [
+      //   {
+      //     thumb: '~/assets/images/abe.jpg',
+      //     src: '~/assets/images/abe.jpg',
+      //     id: 1
+      //   }
+      // ]
       posts: []
     }
   },
@@ -21,11 +33,17 @@ export default {
       order: 'sys.createdAt'
     }).then(entries => {
       return {
+        // images: entries.items
         posts: entries.items
       }
     })
     .catch(console.error)
-  }
+  },
+  // methods: {
+  //   openGallery(index) {
+  //     this.$refs.lightbox.showImage(index);
+  //   }
+  // }
 }
 </script>
 
@@ -39,5 +57,9 @@ export default {
     padding: 10px;
     max-width: 100%;
   }
+  // img.thumbnail {
+  //   // height: 100px;
+  //   cursor: pointer;
+  // }
 }
 </style>

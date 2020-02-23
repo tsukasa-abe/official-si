@@ -28,9 +28,12 @@ export default {
 .portfolio-path {
   padding-left: 300px;
   img {
-    max-width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+    // padding: 50px 0;
+    // max-width: 90%;
+    // height: 100vh;
+    // margin: 0 auto;
+    padding: 50px 20px;
+    max-width: 90%;
   }
 }
 </style>

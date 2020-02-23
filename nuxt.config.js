@@ -21,7 +21,11 @@ const config = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  // loading: { loading: '~/components/Loading.vue' },
+  loading: {
+    color: '#00968894',
+    height: '4px'
+  },
   build: {
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
@@ -33,23 +37,21 @@ const config = {
         }),
         config.devtool = 'inline-cheap-module-source-map'
       }
-    },
-    vendor: [
-      'vue-awesome-swiper'
-    ]
+    }
   },
   /*
   ** Global CSS
   */
   css: [
     '@/assets/css/style.scss',
-    'swiper/dist/css/swiper.css'
+    'swiper/dist/css/swiper.css',
+    'animate.css'
   ],
   plugins: [
     { src: '~plugins/contentful' },
     { src: '~plugins/vue-awesome-swiper', ssr: false},
-    { src: '~plugins/vue-scroll-reveal', ssr: false },
-    '~plugins/scroll',
+    { src: '~plugins/vueinview', ssr: false },
+    // { src: '~plugins/vue-lightbox-plugin.js', ssr: false },
     '~/plugins/lazyimage'
   ],
   generate: {
