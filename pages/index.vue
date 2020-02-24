@@ -2,7 +2,7 @@
   section.top
     swiper(:options="swiperOption")
       swiper-slide.top__portfolio(v-for='post in posts', :post="post", , v-bind:key='post.fields.path')
-        v-lazy-image(:src='post.fields.image.fields.file.url')
+        img(v-lazy='post.fields.image.fields.file.url')
 </template>
 
 <script>

@@ -8,8 +8,7 @@
         li.sidemenu
           nuxt-link.navbar-item(to='/portfolio') portfolio
         li.sidemenu
-          a
-            | contact
+          nuxt-link.navbar-item(to='/contact') contact
 </template>
 
 <script>

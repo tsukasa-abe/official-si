@@ -1,13 +1,10 @@
 <template lang="pug">
   section.portfolio
     .container
-      //- div(v-for='(image, index) in images', :key='image.fields.id')
-      div(v-for='post in posts', v-bind:key='post.fields.path')
-        nuxt-link(v-bind:to="{ name: 'portfolio-path', params: { path: post.fields.path }}")
-          v-lazy-image(:src='post.fields.image.fields.file.url', v-inview:animate="'fadeInUp'")
-        //- img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
-      //- client-only
-        light-box(ref='lightbox', :images='images', :show-light-box='false', :show-caption='true')
+      div(v-for='(image, index) in images', :key='image.fields.id')
+        img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
+      client-only
+        light-box(ref='lightbox', :images='images', :show-light-box='false')
 </template>
 
 <script>
@@ -17,15 +14,15 @@ const client = createClient()
 export default {
   data() {
     return {
-      // images: [
-      //   {
-      //     thumb: '~/assets/images/abe.jpg',
-      //     src: '~/assets/images/abe.jpg',
-      //     id: 1
-      //   }
-      // ]
+      images: [],
       posts: []
     }
+  },
+  created: function() {
+    this.images.forEach(function(img) {
+      this.$set(img, 'thumb', img.fields.image.fields.file.url)
+      this.$set(img, 'src', img.fields.image.fields.file.url)
+    }, this)
   },
   async asyncData ({ env, params }) {
     return await client.getEntries({
@@ -33,17 +30,17 @@ export default {
       order: 'sys.createdAt'
     }).then(entries => {
       return {
-        // images: entries.items
+        images: entries.items,
         posts: entries.items
       }
     })
     .catch(console.error)
   },
-  // methods: {
-  //   openGallery(index) {
-  //     this.$refs.lightbox.showImage(index);
-  //   }
-  // }
+  methods: {
+    openGallery(index) {
+      this.$refs.lightbox.showImage(index);
+    }
+  }
 }
 </script>
 
@@ -51,7 +48,7 @@ export default {
 .portfolio {
   padding-top: 20px;
   padding-left: 300px;
-  column-count: 2;
+  column-count: 3;
   column-gap: 0;
   img {
     padding: 10px;
