@@ -1,6 +1,6 @@
 <template lang="pug">
   section.portfolio-path
-    v-lazy-image(:src='post.fields.image.fields.file.url')
+    img(v-lazy='post.fields.image.fields.file.url')
 </template>
 
 <script>
