@@ -4,7 +4,7 @@
       div(v-for='(image, index) in images', :key='image.fields.id')
         img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
       client-only
-        light-box(ref='lightbox', :images='images', :show-light-box='false', :show-caption='true')
+        light-box(ref='lightbox', :images='images', :show-light-box='false')
 </template>
 
 <script>
