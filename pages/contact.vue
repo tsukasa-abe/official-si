@@ -2,9 +2,12 @@
   section.contact
     .contact--text.animated.fadeInDown
       .c-name
-        p Coming soon...
+        p Contact
       .c-body
-        //- p text
+        span お仕事のご依頼やお問い合わせは
+        a こちら
+        span からお願いします。
+
 </template>
 
 <script>
@@ -13,19 +16,19 @@
 
 <style lang="scss" scoped>
 .contact {
-  // padding: 250px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  // height: 100vh;
+  height: 92vh;
+  // padding-top: 300px;
   &--text {
-    color: #888888;
     // padding-top: 400px;
-    width: 400px;
-    text-align: center;
+    // width: 300px;
     .c-name {
       p {
-        font-size: 2.5rem;
+        text-align: center;
+        font-size: 3.5rem;
         font-weight: bold;
       }
       p + p {
@@ -37,6 +40,13 @@
       font-size: 1.6rem;
       padding-top: 3rem;
       line-height: 1.5;
+      a {
+        display: inline-block;
+        text-decoration: underline;
+      }
+    }
+    p, span {
+      color: #888888;
     }
   }
 }

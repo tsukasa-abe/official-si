@@ -54,9 +54,5 @@ export default {
     padding: 10px;
     max-width: 100%;
   }
-  // img.thumbnail {
-  //   // height: 100px;
-  //   cursor: pointer;
-  // }
 }
 </style>
