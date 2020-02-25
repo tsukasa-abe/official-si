@@ -78,7 +78,7 @@ const config = {
   ],
   webfontloader: {
     google: {
-      families: ['Alata|Fredoka+One|Shadows+Into+Light']
+      families: ['Noto+Serif+JP|Alata|Fredoka+One|Shadows+Into+Light']
     }
   },
   // 変数やmixinをグローバルで使用できるようにする
