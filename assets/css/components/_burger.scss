@@ -1,0 +1,31 @@
+.burger {
+  .bm-menu {
+    background-color: #343440;
+  }
+  .bm-burger-button {
+    height: 20px;
+    width: 30px;
+    z-index: 2;
+    .line-style {
+      height: 15%;
+    }
+  }
+  .bm-cross-button {
+    right: 0px !important;
+  }
+}
+
+// vue-burger-menuのオーバーレイ要素の.bm-overlayが思うように動作しないため自作で付与
+.custom-overlay {
+  overflow: hidden;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2000;
+}
+
+// 一旦仮置き
+.sp-none {
+  display: none;
+}

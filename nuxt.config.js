@@ -51,7 +51,8 @@ const config = {
     { src: '~plugins/contentful' },
     { src: '~plugins/vue-awesome-swiper', ssr: false},
     { src: '~plugins/vueinview', ssr: false },
-    { src: '~plugins/vue-lightbox-plugin', ssr: false}
+    { src: '~plugins/vue-lightbox-plugin', ssr: false},
+    { src: '~plugins/vue-burger-menu', ssr: false }
   ],
   generate: {
     routes() {

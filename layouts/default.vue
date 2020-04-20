@@ -4,9 +4,8 @@
     SideNavi
     //- Loading
     transition(name='page', mode="out-in")
-      .main-content
-        .container
-          nuxt
+      .os-center
+        nuxt
 </template>
 
 <script>
@@ -17,19 +16,20 @@ export default {
   components: {
     SideNavi,
     // Loading
+  },
+  mounted () {
+    setTimeout(function () {
+      document.getElementsByTagName("html")[0].classList.add("loading-delay");
+    }, 2000);
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 .page-enter {
   opacity: 0;
 }
 .page-enter-active {
   transition: opacity 3s;
 }
-/* .container {
-  width: 1200px;
-  margin: 0 auto;
-} */
 </style>
