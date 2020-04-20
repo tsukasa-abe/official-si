@@ -1,8 +1,9 @@
 <template lang="pug">
   section.top
-    swiper(:options="swiperOption")
-      swiper-slide.top__portfolio(v-for='post in posts', :post="post", , v-bind:key='post.fields.path')
-        img(v-lazy='post.fields.image.fields.file.url')
+    client-only
+      swiper(:options="swiperOption")
+        swiper-slide.top__portfolio(v-for='post in posts', :post="post", , v-bind:key='post.fields.path')
+          img(v-lazy='post.fields.image.fields.file.url')
 </template>
 
 <script>

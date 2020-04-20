@@ -5,6 +5,11 @@
 html {
   // font-family: 'Noto Sans JP', sans-serif;
   font-size: 62.5%;
+  visibility: hidden;
+}
+
+html.wf-inactive, html.loading-delay {
+  visibility: visible;
 }
 
 body {
