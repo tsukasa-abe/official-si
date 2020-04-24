@@ -1,11 +1,21 @@
 .burger {
   .bm-menu {
     background-color: #343440;
+    // @include sp-small {
+    //   width: 150px!important;
+    // }
   }
   .bm-burger-button {
     height: 20px;
     width: 30px;
     z-index: 2;
+    position: fixed;
+    @include sp-small {
+      width: 25px;
+      height: 15px;
+      right: 20px!important;
+      top: 20px;
+    }
     .line-style {
       height: 15%;
     }
@@ -23,9 +33,9 @@
   height: 100%;
   position: fixed;
   z-index: 2000;
-}
-
-// 一旦仮置き
-.sp-none {
-  display: none;
+  // headerの高さ分でネガティブマージンする
+  margin-top: -90px;
+  @include sp-small {
+    margin-top: -60px;
+  }
 }

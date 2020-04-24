@@ -1,21 +1,30 @@
 <template lang="pug">
-  section.top
-    client-only
-      swiper(:options="swiperOption")
-        swiper-slide.top__portfolio(v-for='post in posts', :post="post", , v-bind:key='post.fields.path')
-          img(v-lazy='post.fields.image.fields.file.url')
+  div
+    section.top
+      client-only
+        swiper(:options="swiperOption")
+          swiper-slide.top__portfolio(v-for='post in postsLimit', :post="post", , v-bind:key='post.fields.path')
+            img(v-lazy='post.fields.image.fields.file.url')
+    About
+    Portfolio
+    Contact
 </template>
 
 <script>
-import {createClient} from '~/plugins/contentful.js'
+import About from '~/components/sections/About.vue'
+import Portfolio from '~/components/sections/Portfolio.vue'
+import Contact from '~/components/sections/Contact.vue'
+import { mapState } from 'vuex'
 
-const client = createClient()
-const MAX_ENTRY = 4;
 
 export default {
+  components: {
+    About,
+    Portfolio,
+    Contact
+  },
   data() {
     return {
-      posts: [],
       swiperOption: {
         slidesPerView: 1,
         loopedSlides: 4,
@@ -28,34 +37,28 @@ export default {
       }
     }
   },
-  async asyncData ({ env, params }) {
-    return await client.getEntries({
-      'content_type': env.CTF_PAGE_TYPE_ID,
-      order: 'sys.createdAt',
-      limit: MAX_ENTRY
-    }).then(entries => {
-      return {
-        posts: entries.items
-      }
-    })
-    .catch(console.error)
+  computed: {
+    ...mapState(['posts']),
+    postsLimit() {
+      // 最初の４件のみ取得する
+      return this.posts.slice(0, 4);
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .top {
-  &__portfolio {
-    padding-left: 300px;
-  }
   img {
-    padding: 50px 20px;
-    max-width: 90%;
-    // 下記仮
-    // padding: 50px 0;
-    // max-width: 90%;
-    // height: 100vh;
-    // margin: 0 auto;
+    padding: 50px 0 0;
+    width: 1200px;
+    @include pc-large {
+      width: 1300px;
+    }
+    @include sp {
+      width: 100%;
+      padding: 0;
+    }
   }
 }
 </style>

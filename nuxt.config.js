@@ -18,9 +18,6 @@ const config = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   // loading: { loading: '~/components/Loading.vue' },
   loading: {
     color: '#00968894',
@@ -39,9 +36,6 @@ const config = {
       }
     }
   },
-  /*
-  ** Global CSS
-  */
   css: [
     '@/assets/css/style.scss',
     'swiper/dist/css/swiper.css',
@@ -52,8 +46,14 @@ const config = {
     { src: '~plugins/vue-awesome-swiper', ssr: false},
     { src: '~plugins/vueinview', ssr: false },
     { src: '~plugins/vue-lightbox-plugin', ssr: false},
-    { src: '~plugins/vue-burger-menu', ssr: false }
+    { src: '~plugins/vue-burger-menu', ssr: false },
+    { src: '~plugins/vue-scrollto' }
   ],
+  router: {
+    middleware: [
+      'getContentful'
+    ]
+  },
   generate: {
     routes() {
       return cdaClient.getEntries({
@@ -65,17 +65,12 @@ const config = {
       })
     }
   },
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     '@nuxtjs/style-resources',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    'vue-scrollto/nuxt',
   ],
   webfontloader: {
     google: {
@@ -86,6 +81,7 @@ const config = {
   styleResources: {
     scss: [
       '~/assets/css/foundation/_variables.scss',
+      '~/assets/css/foundation/_mixins.scss'
     ]
   },
   env: {

@@ -49,3 +49,26 @@ button {
 img {
   display: block;
 }
+
+.os-center {
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  @include sp {
+    width: 100%;
+  }
+}
+
+.pc-none {
+  display: block;
+  @include sp {
+    display: none;
+  }
+}
+
+.sp-none {
+  display: none;
+  @include sp {
+    display: block;
+  }
+}

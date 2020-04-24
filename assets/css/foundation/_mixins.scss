@@ -1,0 +1,36 @@
+// 15インチ以上のPC用
+@mixin pc-large {
+  @media screen and (min-width: 1681px) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+// ここからSideNaviをなくす
+@mixin sp {
+  @media screen and (max-width: 959px) {
+    @content;
+  }
+}
+
+// @mixin sp {
+//   @media screen and (max-width: 812px) {
+//     @content;
+//   }
+// }
+
+// スマホ縦画面用
+@mixin sp-small {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin column($col) {
+  flex-basis: calc(#{$col} / 12 * 100%);
+}
