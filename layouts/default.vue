@@ -1,21 +1,26 @@
 <template lang="pug">
   // このファイルは、Railsでいうapplication.html.erbみたいなやつ※headerやfooterを管理する
   div
+    Header
     SideNavi
-    //- Loading
-    transition(name='page', mode="out-in")
-      .os-center
+    .main
+      transition(name='page', mode="out-in")
         nuxt
+      Footer
 </template>
 
 <script>
-import SideNavi from '~/components/SideNavi.vue'
-// import Loading from '~/components/Loading.vue'
+import Header from '~/components/parts/Header.vue'
+import Footer from '~/components/parts/Footer.vue'
+import SideNavi from '~/components/parts/SideNavi.vue'
+import Loading from '~/components/parts/Loading.vue'
 
 export default {
   components: {
+    Header,
+    Footer,
     SideNavi,
-    // Loading
+    Loading
   },
   mounted () {
     setTimeout(function () {
@@ -31,5 +36,11 @@ export default {
 }
 .page-enter-active {
   transition: opacity 3s;
+}
+.main {
+  padding-left: 300px;
+  @include sp {
+    padding-left: 0;
+  }
 }
 </style>

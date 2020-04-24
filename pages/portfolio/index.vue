@@ -1,21 +1,21 @@
 <template lang="pug">
   section.portfolio
-    .container
-      div(v-for='(image, index) in images', :key='image.fields.id')
+    .os-center
+      div(v-for='(image, index) in imagesDesc', :key='image.fields.id')
         img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
       client-only
-        light-box(ref='lightbox', :images='images', :show-light-box='false')
+        light-box(ref='lightbox', :images='imagesDesc', :show-light-box='false')
 </template>
 
 <script>
-import {createClient} from '~/plugins/contentful.js'
+import { mapState } from 'vuex'
 
-const client = createClient()
 export default {
-  data() {
-    return {
-      images: [],
-      posts: []
+  computed: {
+    ...mapState(['images']),
+    imagesDesc() {
+      // 降順にソートする
+      return this.images.slice().reverse();
     }
   },
   created: function() {
@@ -23,18 +23,6 @@ export default {
       this.$set(img, 'thumb', img.fields.image.fields.file.url)
       this.$set(img, 'src', img.fields.image.fields.file.url)
     }, this)
-  },
-  async asyncData ({ env, params }) {
-    return await client.getEntries({
-      'content_type': env.CTF_PAGE_TYPE_ID,
-      order: 'sys.createdAt'
-    }).then(entries => {
-      return {
-        images: entries.items,
-        posts: entries.items
-      }
-    })
-    .catch(console.error)
   },
   methods: {
     openGallery(index) {
@@ -47,11 +35,20 @@ export default {
 <style lang="scss" scoped>
 .portfolio {
   padding-top: 20px;
-  padding-left: 300px;
   column-count: 3;
   column-gap: 0;
+  @include sp {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  @include tab {
+    column-count: 2;
+  }
+  @include sp-small {
+    column-count: 1;
+  }
   img {
-    padding: 10px;
+    padding: 5px;
     max-width: 100%;
   }
 }
