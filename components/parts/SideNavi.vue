@@ -40,13 +40,16 @@ export default {
   },
   methods: {
     handleScroll: function() {
-      const body = document.querySelector('body')
+      const main = document.querySelector('.main')
+      const tab = this.$ua.isFromTablet()
       this.snScroll = -window.scrollX + "px";
-      // 横スクロール時画像などの描写が削られてしまうため下記付与
-      if (this.snScroll == '0px') {
-        body.style.width = '100%';
-      } else {
-        body.style.width = '130%';
+      // モバイルでない場合
+      if (tab === false) {
+        if (this.snScroll === '0px') {
+          main.style.width = '100%';
+        } else {
+          main.style.width = '130%';
+        }
       }
     },
     // オープンしたら表示

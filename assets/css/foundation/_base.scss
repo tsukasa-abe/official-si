@@ -3,7 +3,7 @@
 }
 
 html {
-  // font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   font-size: 62.5%;
   visibility: hidden;
 }
@@ -18,9 +18,6 @@ body {
   letter-spacing: 0;
   line-height: 1;
   font-family: $f-alata;
-  // @include sp {
-  //   font-size: 1.4rem;
-  // }
 }
 
 a, button {

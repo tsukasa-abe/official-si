@@ -71,6 +71,7 @@ const config = {
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
     'vue-scrollto/nuxt',
+    'nuxt-user-agent'
   ],
   webfontloader: {
     google: {
