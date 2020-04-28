@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.portfolio
+  section.portfolio(:class="{'tab-style': $ua.isFromTablet()}")
     .portfolio--title#portfolio
       h1 Portfolio
     .portfolio--img
@@ -41,16 +41,12 @@ export default {
     overflow: hidden;
     position: relative;
     img {
-      // padding-top: 10rem;
-      // padding: 10rem 50px 20px;
-      // width: 1200px;
       @include pc-large {
         width: 1300px;
       }
       @include sp {
         width: 100%;
         padding: 0;
-        // padding-top: 6rem;
       }
     }
     .caption {

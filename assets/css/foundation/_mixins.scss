@@ -5,6 +5,12 @@
   }
 }
 
+@mixin tab-pro {
+  @media screen and (min-width: 1024px) and (max-width: 1366px) {
+    @content;
+  }
+}
+
 @mixin tab {
   @media screen and (max-width: 1024px) {
     @content;
@@ -17,12 +23,6 @@
     @content;
   }
 }
-
-// @mixin sp {
-//   @media screen and (max-width: 812px) {
-//     @content;
-//   }
-// }
 
 // スマホ縦画面用
 @mixin sp-small {

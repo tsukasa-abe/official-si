@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.portfolio
+  section.portfolio(:class="{'tab-style': $ua.isFromTablet()}")
     .os-center
       div(v-for='(image, index) in imagesDesc', :key='image.fields.id')
         img.thumbnail(v-lazy='image.fields.image.fields.file.url', @click='openGallery(index)', v-inview:animate="'fadeInUp'")
