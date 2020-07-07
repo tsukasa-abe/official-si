@@ -20,7 +20,7 @@
     "dotenv": "^8.2.0",
     "install": "^0.13.0",
     "node-sass": "^4.13.0",
-    "npm": "^6.13.4",
+    "npm": "^6.14.6",
     "nuxt": "^2.0.0",
     "nuxt-user-agent": "^1.2.2",
     "nuxt-webfontloader": "^1.1.0",
